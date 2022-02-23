@@ -15,6 +15,9 @@ def browse_file():
     global filename
     filename = filedialog.askopenfilename()
 
+def help_me():
+    """adding help message box"""
+    tkinter.messagebox.showinfo('Help','How amazing it is')
 
 # adding a menu/submenu
 menubar = Menu(window) # menu
@@ -28,7 +31,7 @@ submenu.add_command(label='Exit', command=window.destroy)
 
 submenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="About Us", menu=submenu)
-submenu.add_cascade(label='Help')
+submenu.add_cascade(label='Help', command=help_me)
 
 textLabel = Label(window, text="This is a Play Button")
 textLabel.pack()
@@ -55,6 +58,8 @@ def set_volume(value):
     """setting the volume"""
     volume = int(value)/100
     mixer.music.set_volume(volume)
+
+
 
 photo = PhotoImage(file='Media//Logo.png')
 # photoLabel = Label(window, image=photo, height=100, width=100)
