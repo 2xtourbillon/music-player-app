@@ -69,27 +69,30 @@ def pause_music():
     paused = True    
     mixer.music.pause()
 
+frame = Frame(window)
+frame.pack(padx=10, pady=10)
+
 # adding the button photos
-photo = PhotoImage(file='Media//Logo.png')
+photo = PhotoImage(file='Media//play.png')
 # photoLabel = Label(window, image=photo, height=100, width=100)
 # photoLabel.pack()
-playButton = Button(window, image=photo, command=play_music)
-playButton.pack()
+playButton = Button(frame, image=photo, command=play_music)
+playButton.pack(side=LEFT, padx=10)
 
 #stop button
 stopPhoto = PhotoImage(file='Media//stop.png')
-stopButton = Button(window, image=stopPhoto, height=50, width=50, command=stop_music)
-stopButton.pack()
+stopButton = Button(frame, image=stopPhoto, height=50, width=50, command=stop_music)
+stopButton.pack(side=LEFT, padx=10)
 
 #pause button
 pausePhoto = PhotoImage(file='Media//pause.png')
-pauseBtn = Button(window, image=pausePhoto, command=pause_music)
-pauseBtn.pack()
+pauseBtn = Button(frame, image=pausePhoto, command=pause_music)
+pauseBtn.pack(side=LEFT, padx=10)
 
 # volume scale
 scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
 scale.set(70) #the value being set is pass to set_volume func
-scale.pack()
+scale.pack(pady=15)
 
 
 
