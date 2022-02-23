@@ -1,5 +1,7 @@
 from tkinter import *
 from pygame import mixer
+from tkinter import filedialog
+import tkinter.messagebox
 
 # initialize the mixer and window
 mixer.init()
@@ -8,6 +10,12 @@ window = Tk()
 window.geometry('300x350')
 window.title('Python music Player')
 
+def browse_file():
+    """browse file dialog in menu"""
+    global filename
+    filename = filedialog.askopenfilename()
+
+
 # adding a menu/submenu
 menubar = Menu(window) # menu
 submenu = Menu(menubar, tearoff=0) # submenu
@@ -15,7 +23,7 @@ window.config(menu=menubar)
 
 # adding items to menu
 menubar.add_cascade(label='File', menu=submenu)
-submenu.add_command(label='Open')
+submenu.add_command(label='Open', command=browse_file)
 submenu.add_command(label='Exit')
 
 submenu = Menu(menubar, tearoff=0)
@@ -32,9 +40,12 @@ Boston = 'Media//More than a feeling.mp3'
 
 def play_music():
     """loading and playing music"""
-    mixer.music.load(LionKing)
-    mixer.music.play()
-    mixer.music.queue(ACDC)
+    try:
+        mixer.music.load(filename)
+        mixer.music.play()
+    except:
+        tkinter.messagebox.showerror('File Not Found')
+        
 
 def stop_music():
     """stopping the music"""
