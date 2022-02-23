@@ -1,3 +1,4 @@
+from os import stat
 from tkinter import *
 from pygame import mixer
 from tkinter import filedialog
@@ -49,14 +50,17 @@ def play_music():
         try:
             mixer.music.load(filename)
             mixer.music.play()
+            statusbar['text'] = 'Music is playing'
         except:
             tkinter.messagebox.showerror('File Error', 'File Not Found')
     else:
         mixer.music.unpause()
+        statusbar['text'] = 'Music is resumed'
 
 def stop_music():
     """stopping the music"""
     mixer.music.stop()
+    statusbar['text'] = 'Music stopped'
 
 def set_volume(value):
     """setting the volume"""
@@ -68,6 +72,12 @@ def pause_music():
     global paused
     paused = True    
     mixer.music.pause()
+    statusbar['text'] = 'Music paused'
+
+def rewind_music():
+    """rewind music"""
+    play_music()
+    statusbar['text'] = 'Music is rewinded'
 
 frame = Frame(window)
 frame.pack(padx=10, pady=10)
@@ -97,12 +107,15 @@ bottomframe.pack()
 rewindPhoto = PhotoImage(file='Media//rewind.png')
 rewindButton = Button(bottomframe, image=rewindPhoto, command=rewind_music)
 rewindButton.grid(row=0, column=0, padx=10)
-
+ 
 # volume scale
-scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
+scale = Scale(bottomframe, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
 scale.set(70) #the value being set is pass to set_volume func
-scale.pack(pady=15)
+scale.grid(row=0, column=1)
 
+# status bar
+statusbar = Label(window, text='Keep enjoying the music', relief=SUNKEN, anchor=W)
+statusbar.pack(side=BOTTOM, fill=X) #fill all spaces from left and right
 
 
 # close window
