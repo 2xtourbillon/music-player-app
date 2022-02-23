@@ -77,17 +77,17 @@ photo = PhotoImage(file='Media//play.png')
 # photoLabel = Label(window, image=photo, height=100, width=100)
 # photoLabel.pack()
 playButton = Button(frame, image=photo, command=play_music)
-playButton.pack(side=LEFT, padx=10)
+playButton.grid(row=0, column=0, padx=10)
 
 #stop button
 stopPhoto = PhotoImage(file='Media//stop.png')
 stopButton = Button(frame, image=stopPhoto, height=50, width=50, command=stop_music)
-stopButton.pack(side=LEFT, padx=10)
+stopButton.grid(row=0, column=1, padx=10)
 
 #pause button
 pausePhoto = PhotoImage(file='Media//pause.png')
 pauseBtn = Button(frame, image=pausePhoto, command=pause_music)
-pauseBtn.pack(side=LEFT, padx=10)
+pauseBtn.grid(row=0, column=2, padx=10)
 
 # volume scale
 scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
