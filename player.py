@@ -89,6 +89,15 @@ pausePhoto = PhotoImage(file='Media//pause.png')
 pauseBtn = Button(frame, image=pausePhoto, command=pause_music)
 pauseBtn.grid(row=0, column=2, padx=10)
 
+#bottom frame
+bottomframe = Frame(window)
+bottomframe.pack()
+
+# rewind button
+rewindPhoto = PhotoImage(file='Media//rewind.png')
+rewindButton = Button(bottomframe, image=rewindPhoto, command=rewind_music)
+rewindButton.grid(row=0, column=0, padx=10)
+
 # volume scale
 scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
 scale.set(70) #the value being set is pass to set_volume func
