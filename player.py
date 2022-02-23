@@ -15,9 +15,12 @@ window.config(menu=menubar)
 
 # adding items to menu
 menubar.add_cascade(label='File', menu=submenu)
-menubar.add_cascade(label="About Us")
 submenu.add_command(label='Open')
 submenu.add_command(label='Exit')
+
+submenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="About Us", menu=submenu)
+submenu.add_cascade(label='Help')
 
 
 textLabel = Label(window, text="This is a Play Button")
