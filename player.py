@@ -24,7 +24,7 @@ window.config(menu=menubar)
 # adding items to menu
 menubar.add_cascade(label='File', menu=submenu)
 submenu.add_command(label='Open', command=browse_file)
-submenu.add_command(label='Exit')
+submenu.add_command(label='Exit', command=window.destroy)
 
 submenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="About Us", menu=submenu)
