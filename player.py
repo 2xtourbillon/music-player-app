@@ -49,7 +49,6 @@ def play_music():
     except:
         tkinter.messagebox.showerror('File Not Found')
         
-
 def stop_music():
     """stopping the music"""
     mixer.music.stop()
@@ -59,8 +58,7 @@ def set_volume(value):
     volume = int(value)/100
     mixer.music.set_volume(volume)
 
-
-
+# adding the button photos
 photo = PhotoImage(file='Media//Logo.png')
 # photoLabel = Label(window, image=photo, height=100, width=100)
 # photoLabel.pack()
@@ -77,4 +75,7 @@ scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
 scale.set(70) #the value being set is pass to set_volume func
 scale.pack()
 
+
+
+# close window
 window.mainloop()
