@@ -22,7 +22,6 @@ submenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="About Us", menu=submenu)
 submenu.add_cascade(label='Help')
 
-
 textLabel = Label(window, text="This is a Play Button")
 textLabel.pack()
 
