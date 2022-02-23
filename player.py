@@ -5,8 +5,8 @@ import tkinter.messagebox
 
 # initialize the mixer and window
 mixer.init()
-window = Tk()
 
+window = Tk()
 window.geometry('300x350')
 window.title('Python music Player')
 
@@ -44,11 +44,16 @@ Boston = 'Media//More than a feeling.mp3'
 def play_music():
     """loading and playing music"""
     try:
-        mixer.music.load(filename)
-        mixer.music.play()
+        paused #check if pause button is clicked
     except:
-        tkinter.messagebox.showerror('File Not Found')
-        
+        try:
+            mixer.music.load(filename)
+            mixer.music.play()
+        except:
+            tkinter.messagebox.showerror('File Error', 'File Not Found')
+    else:
+        mixer.music.unpause()
+
 def stop_music():
     """stopping the music"""
     mixer.music.stop()
@@ -57,6 +62,12 @@ def set_volume(value):
     """setting the volume"""
     volume = int(value)/100
     mixer.music.set_volume(volume)
+
+def pause_music():
+    """pausing the music"""
+    global paused
+    paused = True    
+    mixer.music.pause()
 
 # adding the button photos
 photo = PhotoImage(file='Media//Logo.png')
@@ -69,6 +80,11 @@ playButton.pack()
 stopPhoto = PhotoImage(file='Media//stop.png')
 stopButton = Button(window, image=stopPhoto, height=50, width=50, command=stop_music)
 stopButton.pack()
+
+#pause button
+pausePhoto = PhotoImage(file='Media//pause.png')
+pauseBtn = Button(window, image=pausePhoto, command=pause_music)
+pauseBtn.pack()
 
 # volume scale
 scale = Scale(window, from_=0, to=100, orient=HORIZONTAL, command=set_volume)
