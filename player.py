@@ -8,6 +8,15 @@ window = Tk()
 window.geometry('300x350')
 window.title('Python music Player')
 
+# adding a menu
+menubar = Menu(window)
+window.config(menu=menubar)
+
+# adding items to menu
+menubar.add_cascade(label='File')
+menubar.add_cascade(label="About Us")
+
+
 textLabel = Label(window, text="This is a Play Button")
 textLabel.pack()
 
